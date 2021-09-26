@@ -6,7 +6,7 @@ import {
 	Image,
 	StyleSheet,
 } from "react-native";
-import { FLEXTYPE, FONTS, SIZES } from "./../constants/theme";
+import { FONTS, SIZES } from "./../constants/theme";
 
 const SlidesItem = ({ item }) => {
 	const { width } = useWindowDimensions();

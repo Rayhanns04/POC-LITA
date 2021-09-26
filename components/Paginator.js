@@ -1,11 +1,25 @@
 import React from "react";
-import { View, Text, Animated, useWindowDimensions } from "react-native";
-import { COLORS } from "./../constants/theme";
+import { View, Animated, useWindowDimensions } from "react-native";
 
-const Paginator = ({ data, scrollX }) => {
+const Paginator = ({
+	data,
+	scrollX,
+	containerStyles,
+	outputRange,
+	dotStyle,
+	outputRangeDotWidth,
+}) => {
 	const { width } = useWindowDimensions();
+
 	return (
-		<View style={{ flexDirection: "row", height: 20, marginBottom: 15 }}>
+		<View
+			style={{
+				flexDirection: "row",
+				height: 20,
+				marginBottom: 15,
+				...containerStyles,
+			}}
+		>
 			{data.map((_, i) => {
 				const inputRange = [
 					(i - 1) * width,
@@ -15,28 +29,23 @@ const Paginator = ({ data, scrollX }) => {
 
 				const dotWidth = scrollX.interpolate({
 					inputRange,
-					outputRange: [10, 24, 10],
+					outputRange: outputRangeDotWidth,
 					extrapolate: "clamp",
 				});
 
 				const dotColor = scrollX.interpolate({
 					inputRange,
-					outputRange: [
-						COLORS.lightGray3,
-						COLORS.blue,
-						COLORS.lightGray3,
-					],
+					outputRange,
 					extrapolate: "clamp",
 				});
 
 				return (
 					<Animated.View
 						style={{
+							...dotStyle,
 							width: dotWidth,
-							height: 10,
 							borderRadius: 5,
 							backgroundColor: dotColor,
-							marginHorizontal: 8,
 						}}
 						key={i.toString()}
 					/>

@@ -3,7 +3,13 @@ import { View, Text } from "react-native";
 
 const Message = () => {
 	return (
-		<View>
+		<View
+			style={{
+				flex: 1,
+				justifyContent: "center",
+				alignItems: "center",
+			}}
+		>
 			<Text>Message</Text>
 		</View>
 	);

@@ -22,6 +22,8 @@ const Tabs = () => {
 					backgroundColor: COLORS.white,
 					borderTopColor: COLORS.transparent,
 					paddingHorizontal: SIZES.padding - 8,
+					borderTopWidth: 1,
+					borderTopColor: COLORS.lightGray3,
 				},
 			}}
 			initialRouteName={"Home"}

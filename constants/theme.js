@@ -55,6 +55,7 @@ export const SIZES = {
 	h5: 18,
 	h6: 14,
 	h7: 12,
+	h8: 10,
 	bodyLarge: 40,
 	body1: 30,
 	body2: 28,
@@ -130,12 +131,12 @@ export const FONTS = {
 	h5: {
 		fontFamily: `${MEDIUM}`,
 		fontSize: SIZES.h5,
-		lineHeight: 22,
+		lineHeight: 27,
 	},
 	h5Bold: {
 		fontFamily: `${BOLD}`,
 		fontSize: SIZES.h5,
-		lineHeight: 22,
+		lineHeight: 27,
 	},
 	h6: {
 		fontFamily: `${MEDIUM}`,
@@ -150,7 +151,12 @@ export const FONTS = {
 	h7: {
 		fontFamily: `${BOLD}`,
 		fontSize: SIZES.h7,
-		lineHeight: 22,
+		lineHeight: 18,
+	},
+	h8Bold: {
+		fontFamily: `${BOLD}`,
+		fontSize: SIZES.h8,
+		lineHeight: 15,
 	},
 	// Body
 	bodyLarge: {
@@ -186,12 +192,12 @@ export const FONTS = {
 	body6: {
 		fontFamily: `${REGULAR}`,
 		fontSize: SIZES.body6,
-		lineHeight: 16,
+		lineHeight: 18,
 	},
 	body7: {
 		fontFamily: `${REGULAR}`,
 		fontSize: SIZES.body7,
-		lineHeight: 22,
+		lineHeight: 16,
 	},
 };
 

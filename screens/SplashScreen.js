@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ImageBackground } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { IMAGES, COLORS } from "../constants";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const SplashScreen = ({ navigation }) => {
-	setTimeout(() => {
-		navigation.replace("Container");
-	}, 500);
+	useEffect(() => {
+		(async () => {
+			let status = await AsyncStorage.getItem("@isLogin");
+			if (status !== "1" || status === null || status === "") {
+				return navigation.replace("Container");
+			} else {
+				setTimeout(() => {
+					return navigation.replace("Tabs");
+				}, 500);
+			}
+		})();
+	}, []);
 	return (
 		<ImageBackground
 			source={IMAGES.SPLASH}

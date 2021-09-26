@@ -12,6 +12,7 @@ import { StatusBar } from "expo-status-bar";
 import onboardingdata from "../assets/api/onboardingdata";
 import SlidesItem from "../components/SlidesItem";
 import Paginator from "./../components/Paginator";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Container = ({ navigation }) => {
 	const [currrentIndex, setCurrentIndex] = useState(0);
@@ -37,6 +38,7 @@ const Container = ({ navigation }) => {
 			<View style={{ flex: 3 }}>
 				<FlatList
 					data={onboardingdata}
+					keyExtractor={(item) => `${item.id}`}
 					showsHorizontalScrollIndicator={false}
 					renderItem={({ item }) => <SlidesItem item={item} />}
 					horizontal
@@ -62,7 +64,20 @@ const Container = ({ navigation }) => {
 					viewabilityConfig={viewConfig}
 				/>
 			</View>
-			<Paginator data={onboardingdata} scrollX={scrollX} />
+			<Paginator
+				data={onboardingdata}
+				scrollX={scrollX}
+				outputRange={[
+					COLORS.lightGray3,
+					COLORS.blue,
+					COLORS.lightGray3,
+				]}
+				dotStyle={{
+					height: 10,
+					marginHorizontal: 8,
+				}}
+				outputRangeDotWidth={[10, 24, 10]}
+			/>
 
 			<TouchableOpacity
 				style={{
@@ -72,7 +87,11 @@ const Container = ({ navigation }) => {
 					borderColor: COLORS.blue,
 					borderRadius: 15,
 				}}
-				onPress={() => navigation.navigate("Home")}
+				onPress={async () => {
+					await AsyncStorage.setItem("@isLogin", "1");
+					await AsyncStorage.setItem("@isLoginWithAuth", "0");
+					navigation.navigate("Home");
+				}}
 			>
 				<Text
 					style={{

@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import { createStackNavigator } from "@react-navigation/stack";
-import { SplashScreen, Slides } from "./screens";
+import { SplashScreen, Slides, Auth, PhoneNumberAuth } from "./screens";
 import { NavigationContainer } from "@react-navigation/native";
 import Container from "./screens/Container";
 import Tabs from "./tabs/Tabs";
@@ -51,8 +51,22 @@ export default function App() {
 						}}
 					/>
 					<Stack.Screen
-						name="Home"
+						name="Tabs"
 						component={Tabs}
+						options={{
+							headerShown: false,
+						}}
+					/>
+					<Stack.Screen
+						name="Auth"
+						component={Auth}
+						options={{
+							headerShown: false,
+						}}
+					/>
+					<Stack.Screen
+						name="PhoneNumberAuth"
+						component={PhoneNumberAuth}
 						options={{
 							headerShown: false,
 						}}
