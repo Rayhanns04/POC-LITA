@@ -10,7 +10,7 @@ const PopularServiceItem = ({ item, i }) => {
 				width: 74,
 				flexDirection: "column",
 				alignItems: "center",
-				marginHorizontal: 12,
+				marginHorizontal: 8,
 			}}
 		>
 			<View

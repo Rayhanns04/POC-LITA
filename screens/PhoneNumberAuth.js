@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useState } from "react";
 import {
 	View,
 	Text,
@@ -7,18 +7,13 @@ import {
 	TouchableOpacity,
 	Image,
 	TextInput,
+	ToastAndroid,
 } from "react-native";
 import { COLORS, FONTS, ICONS, SIZES } from "../constants";
 import Ripple from "react-native-material-ripple";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const PhoneNumberAuth = ({ navigation }) => {
-	const setToken = async () => {
-		await AsyncStorage.setItem("@isLoginWithAuth", "1");
-		setTimeout(() => {
-			return navigation.replace("Tabs");
-		}, 500);
-	};
+	const [phoneNumber, setPhoneNumber] = useState(null);
 
 	return (
 		<SafeAreaView
@@ -69,8 +64,8 @@ const PhoneNumberAuth = ({ navigation }) => {
 			>
 				<Text
 					style={{
-						width: SIZES.width / 1.75,
-						...FONTS.h24Bold,
+						width: SIZES.width / 1.5,
+						...FONTS.h2Bold,
 					}}
 				>
 					<Text
@@ -126,12 +121,14 @@ const PhoneNumberAuth = ({ navigation }) => {
 
 					<TextInput
 						style={{
-							marginLeft: 24,
 							flex: 1,
 							borderBottomColor: COLORS.black,
 							borderBottomWidth: 2,
-							...FONTS.h24Bold,
+							...FONTS.h2Bold,
+							marginLeft: 24,
 						}}
+						onChangeText={setPhoneNumber}
+						value={phoneNumber}
 						keyboardType="number-pad"
 					/>
 				</View>
@@ -161,7 +158,24 @@ const PhoneNumberAuth = ({ navigation }) => {
 					}}
 					rippleContainerBorderRadius={999}
 					rippleDuration={500}
-					onPress={() => setToken()}
+					onPress={() => {
+						console.log(phoneNumber.length);
+						if (
+							(phoneNumber != null || phoneNumber === "") &&
+							(phoneNumber.length == 12 ||
+								phoneNumber.length == 11)
+						) {
+							navigation.navigate("PhoneNumberVerification", {
+								phone: phoneNumber,
+							});
+						} else {
+							ToastAndroid.showWithGravity(
+								"Please fill with your phone number !",
+								ToastAndroid.SHORT,
+								ToastAndroid.TOP
+							);
+						}
+					}}
 				>
 					<View
 						style={{

@@ -3,7 +3,13 @@ import { StyleSheet } from "react-native";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import { createStackNavigator } from "@react-navigation/stack";
-import { SplashScreen, Slides, Auth, PhoneNumberAuth } from "./screens";
+import {
+	SplashScreen,
+	Slides,
+	Auth,
+	PhoneNumberAuth,
+	PhoneNumberVerification,
+} from "./screens";
 import { NavigationContainer } from "@react-navigation/native";
 import Container from "./screens/Container";
 import Tabs from "./tabs/Tabs";
@@ -67,6 +73,14 @@ export default function App() {
 					<Stack.Screen
 						name="PhoneNumberAuth"
 						component={PhoneNumberAuth}
+						options={{
+							headerShown: false,
+						}}
+					/>
+
+					<Stack.Screen
+						name="PhoneNumberVerification"
+						component={PhoneNumberVerification}
 						options={{
 							headerShown: false,
 						}}

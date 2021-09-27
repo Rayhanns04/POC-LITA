@@ -90,7 +90,7 @@ const Container = ({ navigation }) => {
 				onPress={async () => {
 					await AsyncStorage.setItem("@isLogin", "1");
 					await AsyncStorage.setItem("@isLoginWithAuth", "0");
-					navigation.navigate("Home");
+					return navigation.navigate("Tabs");
 				}}
 			>
 				<Text

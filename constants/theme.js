@@ -96,12 +96,12 @@ export const FONTS = {
 	h2: {
 		fontFamily: `${MEDIUM}`,
 		fontSize: SIZES.h2,
-		lineHeight: 30,
+		// lineHeight: 24,
 	},
 	h2Bold: {
 		fontFamily: `${BOLD}`,
 		fontSize: SIZES.h2,
-		lineHeight: 30,
+		// lineHeight: 24,
 	},
 	h3: {
 		fontFamily: `${MEDIUM}`,
